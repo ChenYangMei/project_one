@@ -22,7 +22,7 @@
     </p>
     <p>
       <%= f.label :family_member %>
-      <%= f.collection_select(:family_members, Account.family_member, :id, :name, {:prompt => "Please select a family member"}, {:multiple => true}) %>
+      <%= f.collection_select(:family_members, Account.family_member, :id, :name, {:prompt => "Please select family member(s)"}, {:multiple => true}) %>
     </p>
     <%= f.submit %>
   <% end %>

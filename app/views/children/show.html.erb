@@ -11,6 +11,21 @@
       <li>Date of Birth: <%= @child.dob %></li>
     </ul>
     <br>
+    <p>Teacher(s):</p>
+    <ul>
+      <% @child.teachers.each do |t| %>
+        <li><%= link_to(t.name, account_path(t.id)) %></li>
+      <% end %>
+    </ul>
+    <p>Family Member(s):</p>
+    <ul>
+      <% @child.family_members.each do |f| %>
+        <li><%= link_to(f.name, account_path(f.id)) %></li>
+      <% end %>
+    </ul>
+
+
+    <br>
     <hr>
     <br>
 
@@ -26,7 +41,5 @@
 
   </div>
 
-  <h1>PARENT COUNT: <%= @child.family_members.count %></h1>
-  <h1>TEACHER COUNT: <%= @child.teachers.count %></h1>
 
 </div>
