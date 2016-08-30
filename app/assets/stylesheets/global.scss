@@ -1,0 +1,87 @@
+
+@import 'https://fonts.googleapis.com/css?family=Permanent+Marker';
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #99ccff;
+  font-family: monospace;
+}
+#logo {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.2em;
+  color: #feff57;
+}
+a {
+  text-decoration: none;
+  color: ghostwhite;
+  font-size: 1.2em;
+}
+nav{
+  padding: 2em 5em 1em 5em;
+  text-align: right;
+}
+nav a{
+  padding: 0 1em;
+}
+.index img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  margin-bottom: 1em;
+}
+.index {
+  text-align: left;
+  padding: 1em;
+  border: 1px solid white;
+  width: 20%;
+  margin-left: 2em;
+  line-height: 2;
+}
+.show {
+  width: 60%;
+  margin: 50px auto;
+}
+.show_img {
+  float: left;
+  width: 40%;
+}
+.show_img img {
+  width:100%;
+  border-radius: 10%;
+}
+.show_text {
+  float: right;
+  width: 60%;
+  font-size: 1.2em;
+  padding: 2em;
+}
+.show_text a{
+  text-decoration: none;
+  color: #4f372d;
+}
+.form {
+  line-height: 2;
+  font-size: 1.5em;
+  width: 50%;
+  margin: 2em auto;
+}
+.home_page {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2em;
+}
+#home_img {
+  width: 100%;
+  -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.8)));
+  border-radius: 10%;
+}
+.flash {
+  text-align: center;
+  padding-top: 1em;
+}

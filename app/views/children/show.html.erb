@@ -1,0 +1,32 @@
+<div class="show">
+
+  <div class="show_img">
+    <%= image_tag(@child.image) %>
+  </div>
+
+  <div class="show_text">
+    <ul>
+      <li>Name:  <%= @child.name %></li>
+      <li>Gender: <%= @child.gender %></li>
+      <li>Date of Birth: <%= @child.dob %></li>
+    </ul>
+    <br>
+    <hr>
+    <br>
+
+    <% if @current_account.role == "admin" || @current_account.role == "teacher" %>
+      <div class="controls">
+        <p>
+          <%= link_to("Edit #{@child.name} |", edit_child_path(@child))%>
+          <%= link_to("Delete #{@child.name} |", child_path( @child.id ), :method => :delete, :data => {:confirm => "Are you sure to delete child #{@child.name}?"}) %>
+          <%= link_to("All Children", children_path) %>
+        </p>
+      </div>
+    <% end %>
+
+  </div>
+
+  <h1>PARENT COUNT: <%= @child.family_members.count %></h1>
+  <h1>TEACHER COUNT: <%= @child.teachers.count %></h1>
+
+</div>

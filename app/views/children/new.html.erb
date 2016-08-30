@@ -1,0 +1,13 @@
+<% if @current_account.present? && (@current_account.role == "teacher" || @current_account.role == "admin") %>
+
+  <h1 class = "form">Create a Child's Portfolio</h1>
+
+  <%= render :partial => "form" %>
+
+<% else %>
+
+  <h1 class="form">Sign up to create your community!</h1>
+
+  <%= render :partial => "form" %>
+
+<% end %>

@@ -1,0 +1,26 @@
+<% if @current_account %>
+  <div class="index">
+    <h3>Users:</h3>
+    <% @accounts.each do |a| %>
+      <p><%= image_tag(a.image) %> <%= link_to(a.name, account_path(a.id)) %> (<%= a.role.humanize %>)</p>
+    <% end %>
+    <br>
+    <hr>
+    <br>
+    <h3><%= link_to("Children:", children_path) %></h3>
+    <% @children.each do |c| %>
+      <p><%= image_tag(c.image) %> <%= link_to(c.name, child_path(c.id)) %></p>
+    <% end %>
+  </div>
+
+<% else %>
+
+  <div class="home_page">
+    <h1>Welcome to <span id="logo">Why I Deserve Icecream!</span></h1>
+    <br>
+    <h2>Share Children's Learning Here...</h2>
+    <br>
+    <img id="home_img"  src="http://salifestyleblog.co.za/wp-content/uploads/2014/12/Kids-Play-Park-Equipment.jpg" alt="" />
+  </div>
+
+<% end %>

@@ -1,0 +1,9 @@
+<% if @current_account.admin_or_teacher? %>
+  <div class="index">
+    <ul>
+      <% @children.each do |c| %>
+        <li><%= image_tag(c.image) %> <%= link_to(c.name, child_path(c.id)) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

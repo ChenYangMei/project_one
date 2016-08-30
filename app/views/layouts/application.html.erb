@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WhyIDeserveIcecream</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <% if flash[:success] %>
+    <p class="flash">
+      <%= flash[:success] %>
+    </p>
+  <% end %>
+
+  <% if flash[:error] %>
+    <p class="flash">
+      <%= flash[:error] %>
+    </p>
+  <% end %>
+
+  <nav>
+
+    <% unless @current_account.present? %>
+      <%= link_to("Log In", login_path()) %>
+    <% else %>
+      <% if @current_account.role == "admin" || @current_account.role == "teacher"%>
+        <%= link_to("Add a Child", new_child_path) %>
+      <% end %>
+      <% if @current_account.role == "admin" %>
+        <%= link_to("Create a User", new_account_path) %>
+      <% end %>
+
+      <%#= link_to("Edit your profile", edit_account_path(@current_account.id)) %>
+      <%= link_to("Log Out", logout_path(), :method => :delete ) %>
+      You are logged in as <%= @current_account.role.humanize %><%= link_to(@current_account.name, @current_account) %>
+    <% end %>
+  </nav>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+</body>
+</html>

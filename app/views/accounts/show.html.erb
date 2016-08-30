@@ -1,0 +1,28 @@
+<div class="show">
+
+  <div class="show_img">
+    <%= image_tag(@account.image) %>
+  </div>
+
+  <div class="show_text">
+    <ul>
+      <li>Name:  <%= @account.name %></li>
+      <li>Role:  <%= @account.role.humanize %></li>
+      <li>Email: <%= @account.email %></li>
+    </ul>
+    <br>
+    <hr>
+    <br>
+
+    <% if @current_account.present? && (@current_account.id == @account.id || @current_account.role == "admin") %>
+      <div class="controls">
+        <p>
+          <%= link_to("Edit #{@account.name} |", edit_account_path(@account))%>
+          <%= link_to("Delete #{@account.name}", account_path( @account.id ), :method => :delete, :data => {:confirm => "Are you sure to delete account #{@account.name}?"}) %>
+        </p>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>

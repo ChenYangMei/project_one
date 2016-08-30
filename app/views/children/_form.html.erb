@@ -1,0 +1,29 @@
+<div class="form">
+  <%= form_for @child do |f| %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name, :required => true %>
+    </p>
+    <p>
+      <%= f.label :gender %>
+      <%= f.select :gender, ['Male', 'Female'] %>
+    </p>
+    <p>
+      <%= f.label :date_of_birth  %>
+      <%= f.date_field :dob %>
+    </p>
+    <p>
+      <%= f.label :image %>
+      <%= f.text_field :image %>
+    </p>
+    <p>
+      <%= f.label :teacher %>
+      <%= f.collection_select(:teachers, Account.teacher, :id, :name, {:prompt => "Please select teacher(s)"}, {:multiple => true}) %>
+    </p>
+    <p>
+      <%= f.label :family_member %>
+      <%= f.collection_select(:family_members, Account.family_member, :id, :name, {:prompt => "Please select a family member"}, {:multiple => true}) %>
+    </p>
+    <%= f.submit %>
+  <% end %>
+</div>
