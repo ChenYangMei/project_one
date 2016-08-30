@@ -20,4 +20,8 @@ class Account < ActiveRecord::Base
   def admin_or_teacher?
     self.role == "admin" || self.role == "teacher"
   end
+
+  def admin?
+    self.role == "admin"
+  end
 end

@@ -15,9 +15,11 @@ class ChildrenController < ApplicationController
   def create
     # binding.pry
     child = Child.create(child_params)
+
     get_all_account_ids.each do |id|
     child.accounts << Account.find( id )
     end
+
     redirect_to children_path
   end
 
@@ -26,8 +28,14 @@ class ChildrenController < ApplicationController
   end
 
   def update
+    # binding.pry
     child = Child.find params[:id]
     child.update(child_params)
+    child.accounts = []
+    get_all_account_ids.each do |id|
+    child.accounts << Account.find( id )
+    end
+
     redirect_to child_path(child.id)
   end
 

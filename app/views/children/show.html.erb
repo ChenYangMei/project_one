@@ -24,12 +24,11 @@
       <% end %>
     </ul>
 
-
     <br>
     <hr>
     <br>
 
-    <% if @current_account.role == "admin" || @current_account.role == "teacher" %>
+    <% if @current_account.admin_or_teacher? %>
       <div class="controls">
         <p>
           <%= link_to("Edit #{@child.name} |", edit_child_path(@child))%>
