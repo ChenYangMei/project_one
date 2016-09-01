@@ -1,5 +1,6 @@
 class Child < ActiveRecord::Base
   has_and_belongs_to_many :accounts
+  has_many :stories, through: :accounts
 
   def teachers
     self.accounts.where(:role => 1)

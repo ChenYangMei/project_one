@@ -1,7 +1,7 @@
 <div class="show">
 
   <div class="show_img">
-    <%= image_tag(@child.image) %>
+    <%= cl_image_tag(@child.image, :gravity=>"face", :crop => "fill", :width => 400, :height => 400) %>
   </div>
 
   <div class="show_text">

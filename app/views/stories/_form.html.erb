@@ -1,0 +1,23 @@
+<div class="story_content">
+  <%= form_for(@story, :html => {multipart: true}) do |f| %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title, :required => true %>
+    <br>
+
+    <%= f.label :children %>
+    <%= f.collection_select(:children, @current_account.children, :id, :name, {:prompt => "Please select child/ren"}, {:multiple => true}) %>
+    <br>
+
+    <%= f.label :story_date %>
+    <%= f.date_field :story_date %>
+    <br>
+
+    <%= f.label :image %>
+    <%= file_field_tag("image[]", :multiple =>true )%>
+    <br>
+
+    <%= f.cktext_area :content, class: 'someclass' %>
+    <%= f.submit %>
+  <% end %>
+</div>

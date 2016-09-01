@@ -1,6 +1,22 @@
 class AccountsController < ApplicationController
   before_action :authorise, :only => [:show, :edit]
 
+  def home
+    # binding.pry
+    @accounts = Account.all
+    @children = Child.all
+    @stories = Story.all
+    @comments = Comment.all
+  end
+
+  def password_reset
+    @account = @current_account
+  end
+
+  def password_reset_sent
+
+  end
+
   def index
     @accounts = Account.all
     @children = Child.all
@@ -16,6 +32,7 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.create(account_params)
+    UserMailer.welcome(@account).deliver_now
     redirect_to accounts_path
   end
 

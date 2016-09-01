@@ -13,9 +13,13 @@
 class Account < ActiveRecord::Base
 
   has_secure_password
+
   enum role: [:admin, :teacher, :family_member]
 
   has_and_belongs_to_many :children
+  has_and_belongs_to_many :stories
+  has_many :comments
+
 
   def admin_or_teacher?
     self.role == "admin" || self.role == "teacher"
@@ -24,4 +28,13 @@ class Account < ActiveRecord::Base
   def admin?
     self.role == "admin"
   end
+
+  def family_member?
+    self.role == "family_member"
+  end
+
+  def children_stories
+    self.stories + self.children.map {|c| c.stories}.first
+  end
+
 end

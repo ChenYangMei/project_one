@@ -1,7 +1,7 @@
 <div class="show">
 
   <div class="show_img">
-    <%= image_tag(@account.image) %>
+    <%= cl_image_tag(@account.image, :gravity=>"face", :crop => "fill", :width => 400, :height => 400) %>
   </div>
 
   <div class="show_text">
@@ -23,6 +23,7 @@
     <% if @current_account.present? && (@current_account.id == @account.id || @current_account.admin?) %>
       <div class="controls">
         <p>
+          <%= link_to 'Reset Password |', password_reset_path %>
           <%= link_to("Edit #{@account.name} |", edit_account_path(@account))%>
           <%= link_to("Delete #{@account.name}", account_path( @account.id ), :method => :delete, :data => {:confirm => "Are you sure to delete account #{@account.name}?"}) %>
         </p>

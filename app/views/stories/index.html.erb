@@ -1,0 +1,15 @@
+
+<div class="story">
+  <h1>All Stories</h1>
+  <% @stories.each do |s| %>
+    <h1><%= link_to(s.title, "/stories/#{s.id}") %></h1>
+    <p>
+      <% s.image.each do |img| %>
+        <%= cl_image_tag(img, :crop => "imagga_crop", :width => 200, :height => 200) %>
+      <% end %>
+    </p>
+    <p>
+      <%= s.content.html_safe %>
+    </p>
+  <% end %>
+</div>

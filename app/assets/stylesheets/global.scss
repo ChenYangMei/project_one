@@ -8,6 +8,7 @@
 body {
   background-color: #99ccff;
   font-family: monospace;
+  line-height: 1.8;
 }
 #logo {
   font-family: 'Permanent Marker', cursive;
@@ -20,13 +21,29 @@ a {
   font-size: 1.2em;
 }
 nav{
-  padding: 2em 5em 1em 5em;
+  padding: 1em 5em;
   text-align: right;
+  background-color: #f4f4f4;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 nav a{
   padding: 0 1em;
+  color: #0f406b;
+}
+.container {
+  margin: 6em 0;
 }
 .index img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  margin-bottom: 1em;
+}
+#comment_account img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -39,8 +56,16 @@ nav a{
   padding: 1em;
   border: 1px solid white;
   width: 20%;
-  margin-left: 2em;
   line-height: 2;
+  float: left;
+  display: inline-block;
+  margin: 0 5em;
+}
+.story_index {
+  width: 60%;
+  float: right;
+  display: inline-block;
+  margin: 0 5em;
 }
 .show {
   width: 60%;
@@ -84,5 +109,16 @@ nav a{
 }
 .flash {
   text-align: center;
-  padding-top: 1em;
+  margin-top: 5em;
+}
+.story_content {
+  width: 60%;
+  margin: 1em auto;
+}
+.story {
+  width: 70%;
+  margin: 2em auto;
+}
+.story img {
+  display: inline-block;
 }

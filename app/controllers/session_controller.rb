@@ -8,15 +8,7 @@ class SessionController < ApplicationController
     if account && account.authenticate(params[:password])
       flash[:success] = "Account successfully logged in"
       session[:account_id] = account.id
-      if account.role == "admin"
-        redirect_to accounts_path
-      end
-      if account.role == "teacher"
-        redirect_to accounts_path
-      end
-      if account.role == "family_member"
-        redirect_to login_path
-      end
+      redirect_to home_path
 
     else
       flash[:error] = "Your password or email is incorrect"
@@ -28,6 +20,6 @@ class SessionController < ApplicationController
   def destroy
     session[:account_id] = nil
     flash[:success] = "You successfully logged out"
-    redirect_to accounts_path
+    redirect_to home_path
   end
 end

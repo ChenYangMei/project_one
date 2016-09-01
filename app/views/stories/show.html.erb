@@ -1,0 +1,23 @@
+<div class="story">
+  <h1><%= @story.title %></h1>
+    <% @story.image.each do |img| %>
+      <%= cl_image_tag(img, :gravity=>"face", :crop => "fill", :width => 400, :height => 300) %>
+    <% end %>
+
+  <p>
+    <%= @story.content.html_safe %>
+  </p>
+
+  <div class="story_control">
+    <% if @current_account.admin_or_teacher? %>
+      <%= link_to("Edit Story |", edit_story_path) %>
+      <%= link_to("Delete Story |", story_path( @story.id ), :method => :delete, :data => {:confirm => "Are you sure to delete story #{@story.title}?"}) %>
+      <%= link_to("All Stories", stories_path) %>
+    <% end %>
+  </div>
+
+  <h3>Comments</h3>
+  <%= render @story.comments.order("created_at ASC") %>
+  <h3>Add a comment here:</h3>
+  <%= render 'comments/form' %>
+</div>

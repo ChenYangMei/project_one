@@ -1,0 +1,6 @@
+<% if comment.account %>
+<h4>Reply: </h4>
+ <p><%= comment.content %> </p>
+ <p id="comment_account">User: <%= image_tag comment.account.image %> <%= link_to( comment.account.name, "/accounts/#{comment.account.id}" ) %>
+ Created: <%= time_ago_in_words(comment.created_at) %> ago.</p>
+ <% end %>
