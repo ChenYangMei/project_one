@@ -1,5 +1,5 @@
 <div class="form">
-  <%= form_for @child do |f| %>
+  <%= form_for(@child, :html => {multipart: true}) do |f| %>
     <p>
       <%= f.label :name %>
       <%= f.text_field :name, :required => true %>
@@ -14,7 +14,7 @@
     </p>
     <p>
       <%= f.label :image %>
-      <%= f.text_field :image %>
+      <%= f.cl_image_upload :image %>
     </p>
     <p>
       <%= f.label :teacher %>

@@ -39,7 +39,10 @@ class AccountsController < ApplicationController
 
   def create
     @password = params[:account][:password]
-    @account = Account.create(account_params)
+    @account = Account.new(account_params)
+    req = Cloudinary::Uploader.upload( params[:file] )
+    @account.image = req["public_id"]
+    @account.save
     UserMailer.welcome(@account, @password).deliver_now
     redirect_to home_path
   end

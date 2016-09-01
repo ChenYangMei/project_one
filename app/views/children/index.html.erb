@@ -2,7 +2,10 @@
   <div class="index">
     <ul>
       <% @children.each do |c| %>
-        <li><%= image_tag(c.image) %> <%= link_to(c.name, child_path(c.id)) %></li>
+        <li>
+          <%= cl_image_tag(c.image, :gravity=>"face", :crop => "fill", :width => 100, :height => 100) %>
+          <%= link_to(c.name, child_path(c.id)) %>
+        </li>
       <% end %>
     </ul>
   </div>

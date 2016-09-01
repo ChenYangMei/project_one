@@ -14,6 +14,7 @@ class StoriesController < ApplicationController
 
   def create
     story = Story.new(story_params)
+    @current_account.stories << story
     params[:image].each do |photo|
       req = Cloudinary::Uploader.upload(photo)
       story.image << req['public_id']
@@ -28,6 +29,7 @@ class StoriesController < ApplicationController
 
   def update
     story = Story.find params[:id]
+    @current_account.stories << story
     story.update(story_params)
     redirect_to story_path(story)
   end

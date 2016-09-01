@@ -1,7 +1,7 @@
 <% new_account = new_account || false %>
 
 <div class="form">
-  <%= form_for @account do |f| %>
+  <%= form_for(@account, :html => {:multipart => true}) do |f| %>
     <p>
       <%= f.label :role %>
       <%= f.select(:role, [['Admin', 'admin'], ['Teacher', 'teacher'], ['Family Member', 'family_member']]) %>
@@ -32,7 +32,7 @@
     </p>
     <p>
       <%= f.label :image %>
-      <%= f.text_field :image %>
+      <%= f.cl_image_upload :image %>
     </p>
     <%= f.submit %>
   <% end %>

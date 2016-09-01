@@ -15,12 +15,14 @@ class ChildrenController < ApplicationController
   def create
     # binding.pry
     child = Child.create(child_params)
-
+    req = Cloudinary::Uploader.upload( params[:file] )
+    child.image = req["public_id"]
+    child.save
     get_all_account_ids.each do |id|
     child.accounts << Account.find( id )
     end
 
-    redirect_to children_path
+    redirect_to child_path(child)
   end
 
   def edit
