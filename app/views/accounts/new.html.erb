@@ -2,7 +2,7 @@
 
   <h1 class = "form">Create your Community Members Here:</h1>
 
-  <%= render :partial => "form" %>
+  <%= render(:partial => "form", locals: {new_account: true}) %>
 
 <% else %>
   <h1 class="form">

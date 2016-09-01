@@ -20,6 +20,8 @@ class AccountsController < ApplicationController
   def index
     @accounts = Account.all
     @children = Child.all
+    @stories = Story.all
+    @comments = Comment.all
   end
 
   def show
@@ -27,13 +29,19 @@ class AccountsController < ApplicationController
   end
 
   def new
+    @password = [('a'..'z'), ('A'..'Z'), (0..9)].map{|i| i.to_a}.flatten.sample(10).join
     @account = Account.new
   end
 
+  def password
+
+  end
+
   def create
+    @password = params[:account][:password]
     @account = Account.create(account_params)
-    UserMailer.welcome(@account).deliver_now
-    redirect_to accounts_path
+    UserMailer.welcome(@account, @password).deliver_now
+    redirect_to home_path
   end
 
   def edit
@@ -49,7 +57,7 @@ class AccountsController < ApplicationController
   def destroy
     account = Account.find params[:id]
     account.destroy
-    redirect_to accounts_path
+    redirect_to home_path
   end
 
   private

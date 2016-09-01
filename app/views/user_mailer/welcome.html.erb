@@ -1,8 +1,16 @@
 
-<h1>Hi <%= @account.name %>,
-Welcome to 'Why I Deserve Icecream'!
-Share children's learning here and be part of the communitt!
+<h1>Hi <%= @account.name %>,</h1>
 
-Click <%#= link_to("Here", password_reset_url(host: 'localhost.com')) %> to set your password.
-Kind regards,
-Yangmei</h1>
+<p>
+  Welcome to 'Why I Deserve Icecream'!
+  Share children's learning here and be part of the community!
+</p>
+
+<p>Your temporary password is <%= @password %></p>
+<p>
+  Click <%= link_to("Here", login_path) %> to log into your account and set your password!
+</p>
+<p>
+  Kind regards,
+  Yangmei
+</p>

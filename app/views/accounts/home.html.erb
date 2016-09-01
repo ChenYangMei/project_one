@@ -45,17 +45,26 @@
       <% else %>
 
           <% @current_account.children_stories.each do |s| %>
-              <h1><%= link_to(s.title, "/stories/#{s.id}") %></h1>
-              <p>
-                <% s.image.each do |img| %>
-                  <%= cl_image_tag(img, :crop => :fill, :width => 200, :height => 200) %>
-                <% end %>
-              </p>
-              <p>
-                <%= s.content.html_safe %>
-              </p>
-              <br>
-              <hr>
+            <h1><%= link_to(s.title, "/stories/#{s.id}") %></h1>
+            <p>
+              Children:
+              <% s.children.each do |c| %>
+                <span><%= link_to(c.name, child_path(c)) %></span>
+              <% end %>
+            </p>
+            <p>
+              Created by <%= link_to(s.accounts.first.name, account_path(s.accounts.first)) %> <%= time_ago_in_words(s.created_at) %> ago.
+            </p>
+            <p>
+              <% s.image.each do |img| %>
+                <%= cl_image_tag(img, :gravity=>"face", :crop => "fill", :width => 100, :height => 70) %>
+              <% end %>
+            </p>
+            <p>
+              <%= truncate(s.content.html_safe, length: 200) %>
+            </p>
+            <br>
+            <hr>
           <% end %>
 
       <% end %>

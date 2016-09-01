@@ -34,7 +34,7 @@ class Account < ActiveRecord::Base
   end
 
   def children_stories
-    self.stories + self.children.map {|c| c.stories}.first
+    self.stories | self.children.map {|c| c.stories}.first
   end
 
 end

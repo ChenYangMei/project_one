@@ -1,14 +1,72 @@
+<div class="index">
+  <h3><%= link_to("Accounts:", accounts_path) %></h3>
+  <% @accounts.each do |a| %>
+    <p>
+      <%= cl_image_tag(a.image, :gravity=>"face", :crop => "fill", :width => 100, :height => 100) %> <%= link_to(a.name, account_path(a.id)) %> (<%= a.role.humanize %>)
+    </p>
+  <% end %>
+  <br>
+  <hr>
 
-  <div class="index">
-    <h3><%= link_to("Accounts:", accounts_path) %></h3>
-    <% @accounts.each do |a| %>
-      <p><%= image_tag(a.image) %> <%= link_to(a.name, account_path(a.id)) %> (<%= a.role.humanize %>)</p>
+  <br>
+  <h3><%= link_to("Children:", children_path) %></h3>
+  <% @children.each do |c| %>
+    <p><%= cl_image_tag(c.image, :gravity=>"face", :crop => "fill", :width => 100, :height => 100) %> <%= link_to(c.name, child_path(c.id)) %></p>
+  <% end %>
+</div>
+
+<div class="story_index">
+
+    <% if @current_account.admin_or_teacher? %>
+
+        <% @stories.each do |s| %>
+          <h1><%= link_to(s.title, "/stories/#{s.id}") %></h1>
+          <p>
+            Children:
+            <% s.children.each do |c| %>
+              <span><%= link_to(c.name, child_path(c)) %></span>
+            <% end %>
+          </p>
+          <p>
+            Created by <%= link_to(s.accounts.first.name, account_path(s.accounts.first)) %> <%= time_ago_in_words(s.created_at) %> ago.
+          </p>
+          <p>
+            <% s.image.each do |img| %>
+              <%= cl_image_tag(img, :gravity=>"face", :crop => "fill", :width => 100, :height => 70) %>
+            <% end %>
+          </p>
+          <p>
+            <%= truncate(s.content.html_safe, length: 200) %>
+          </p>
+          <br>
+          <hr>
+        <% end %>
+
+    <% else %>
+
+        <% @current_account.children_stories.each do |s| %>
+          <h1><%= link_to(s.title, "/stories/#{s.id}") %></h1>
+          <p>
+            Children:
+            <% s.children.each do |c| %>
+              <span><%= link_to(c.name, child_path(c)) %></span>
+            <% end %>
+          </p>
+          <p>
+            Created by <%= link_to(s.accounts.first.name, account_path(s.accounts.first)) %> <%= time_ago_in_words(s.created_at) %> ago.
+          </p>
+          <p>
+            <% s.image.each do |img| %>
+              <%= cl_image_tag(img, :gravity=>"face", :crop => "fill", :width => 100, :height => 70) %>
+            <% end %>
+          </p>
+          <p>
+            <%= truncate(s.content.html_safe, length: 200) %>
+          </p>
+          <br>
+          <hr>
+        <% end %>
+
     <% end %>
-    <br>
-    <hr>
-    <br>
-    <h3><%= link_to("Children:", children_path) %></h3>
-    <% @children.each do |c| %>
-      <p><%= image_tag(c.image) %> <%= link_to(c.name, child_path(c.id)) %></p>
-    <% end %>
-  </div>
+
+</div>

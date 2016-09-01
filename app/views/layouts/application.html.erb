@@ -20,6 +20,9 @@
         <%= link_to("Home", home_path) %>
         <%= link_to("Create a Story", new_story_path) %>
         <%= link_to("Add a Child", new_child_path) %>
+      <% else %>
+        <%= link_to("Home", home_path) %>
+        <%= link_to("Create a Story", new_story_path) %>
       <% end %>
       <% if @current_account.admin? %>
         <%= link_to("Create a User", new_account_path) %>

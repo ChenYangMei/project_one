@@ -1,3 +1,5 @@
+<% new_account = new_account || false %>
+
 <div class="form">
   <%= form_for @account do |f| %>
     <p>
@@ -14,11 +16,19 @@
     </p>
     <p>
       <%= f.label :password %>
+      <% if new_account == true %>
+        <%= f.password_field :password, :required => true, :value => @password %>
+      <% else %>
       <%= f.password_field :password, :required => true %>
+      <% end %>
     </p>
     <p>
       <%= f.label :password_confirmation %>
+      <% if new_account == true %>
+        <%= f.password_field :password_confirmation, :required => true, :value => @password %>
+      <% else %>
       <%= f.password_field :password_confirmation, :required => true %>
+      <% end %>
     </p>
     <p>
       <%= f.label :image %>
