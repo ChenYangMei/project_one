@@ -5,8 +5,8 @@ class AccountsController < ApplicationController
     # binding.pry
     @accounts = Account.all
     @children = Child.all
-    @stories = Story.all
-    @comments = Comment.all
+    @stories = Story.all.order("created_at DESC")
+    @comments = Comment.all.order("created_at DESC")
   end
 
   def password_reset
