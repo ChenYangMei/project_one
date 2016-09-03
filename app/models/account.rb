@@ -35,7 +35,7 @@ class Account < ActiveRecord::Base
 
   def children_stories
     self.stories | self.children.map {|c| c.stories}.first
-  end
+  end 
 
   def all_children
     if self.role == "admin"

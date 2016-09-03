@@ -22,12 +22,6 @@
           <% @stories.each do |s| %>
             <h1><%= link_to(s.title, "/stories/#{s.id}") %></h1>
             <p>
-              Children:
-              <% s.children.each do |c| %>
-                <span><%= link_to(c.name, child_path(c)) %></span>
-              <% end %>
-            </p>
-            <p>
               Created by <%= link_to(s.accounts.first.name, account_path(s.accounts.first)) %> <%= time_ago_in_words(s.created_at) %> ago.
             </p>
             <p>

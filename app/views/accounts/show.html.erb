@@ -5,17 +5,21 @@
   </div>
 
   <div class="show_text">
-    <ul>
-      <li>Name:  <%= @account.name %></li>
-      <li>Role:  <%= @account.role.humanize %></li>
-      <li>Email: <%= @account.email %></li>
-    </ul>
 
-    <ul>
-      <% @account.children.each do |c| %>
-        <li><%= link_to(c.name, child_path(c.id)) %></li>
+    <p>Name:  <%= @account.name %></p>
+    <p>Role:  <%= @account.role.humanize %></p>
+    <p>Email: <%= @account.email %></p>
+    <p>
+      <% if @account.children.count > 0 %>
+        <%= link_to("Children: ", children_path) %>
+        <% @account.children.each do |c| %>
+          <%= link_to(c.name, child_path(c.id)) %>
+        <% end %>
+      <% else %>
+        No children append to this account.
       <% end %>
-    </ul>
+    </p>
+
     <br>
     <hr>
     <br>

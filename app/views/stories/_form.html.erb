@@ -6,7 +6,7 @@
     <br>
 
     <%= f.label :children %>
-    <%= f.collection_select(:children, @current_account.children, :id, :name, {:prompt => "Please select child/ren"}, {:multiple => true}) %>
+    <%= f.collection_select(:children, @current_account.all_children, :id, :name, {:prompt => "Please select child/ren"}, {:multiple => true}) %>
     <br>
 
     <%= f.label :story_date %>
