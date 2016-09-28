@@ -1,28 +1,36 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to my project one while studying Web Development Immerse with General Assembly Sydney. This Ruby on Rails application 'Why I Deserve Ice-cream' is tailored for Early Learning centers to facilitate documenting and sharing children's learning within the community.
 
-Things you may want to cover:
+* How to view the app
+- Access it here: https://casual-hire.herokuapp.com
+  - Login as admin
+    user name: yangmei@gmail.com
+    password: chicken
+  - Login as a teacher:
+    user name: jess@gmail.com
+    password: chicken
+  - Login as a parent:
+    user name: kirily@gmail.com
+    password: chicken
 
-* Ruby version
+- Clone / fork my repo: https://github.com/gingernutter/project_one
 
 * System dependencies
-
-* Configuration
+- Postgres v 9.4
+- Rails v 4.2.0
+- Ruby v 2.2.3
 
 * Database creation
+- bundle
+- rake db:create
+- rake db:migrate
+- rake db:seed
 
-* Database initialization
+* Technologies & API used
+- Heroku (Host)
+- Cloudinary (Single/multiple image upload/display)
+- Sendgrid (Email notification service)
+- CKeditor (Embeded text editor)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Thank you for stopping by.

@@ -16,9 +16,6 @@ class StoriesController < ApplicationController
     story = Story.new(story_params)
     @current_account.stories << story
 
-    # params[:story][:children].shift.each do |c|
-    #   story.children << c
-    # end
     if params[:image] == true
       params[:image].each do |photo|
         req = Cloudinary::Uploader.upload(photo)

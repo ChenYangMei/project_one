@@ -41,7 +41,7 @@ class AccountsController < ApplicationController
     @password = params[:account][:password]
     @account = Account.new(account_params)
     # if params[:file] == true
-      req = Cloudinary::Uploader.upload( params[:file] )
+    req = Cloudinary::Uploader.upload( params[:file] )
       @account.image = req["public_id"]
       @account.save
     # end
