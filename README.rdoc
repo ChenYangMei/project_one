@@ -3,7 +3,7 @@
 Welcome to my project one while studying Web Development Immerse with General Assembly Sydney. This Ruby on Rails application 'Why I Deserve Ice-cream' is tailored for Early Learning centers to facilitate documenting and sharing children's learning within the community.
 
 * How to view the app
-  - Access it here: https://casual-hire.herokuapp.com
+  - Access it here: https://why-i-deserve-icecream.herokuapp.com/
     - Login as an admin
       - user name: yangmei@gmail.com
       - password: chicken
